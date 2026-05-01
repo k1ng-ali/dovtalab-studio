@@ -116,9 +116,12 @@ $radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  background: $bg;
+  background: white;
+  box-shadow:
+      0 8px 25px rgba(0, 0, 0, 0.12),
+      0 2px 10px rgba(0, 0, 0, 0.06);
   padding: 20px;
-  border-radius: $radius;
+  border-radius: 20px;
   margin-bottom: 20px;
 
   &__top {
@@ -139,7 +142,6 @@ $radius: 10px;
     margin: 0;
     font-size: 20px;
     font-weight: 700;
-    color: $text;
     line-height: 1.3;
   }
 
@@ -151,10 +153,10 @@ $radius: 10px;
     border: none;
     cursor: pointer;
     padding: 0;
-    color: $muted;
+    color: #6B7280;
     transition: color 0.15s;
 
-    &:hover { color: $accent; }
+    &:hover { color: #234970; }
   }
 
   &__hash-icon { font-size: 14px; }
@@ -167,7 +169,7 @@ $radius: 10px;
 
   &__copy-hint {
     font-size: 11px;
-    color: $accent;
+    color: #234970;
     animation: fade-pop 1.8s ease forwards;
 
     @keyframes fade-pop {
@@ -188,8 +190,8 @@ $radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: $bg-light;
-    border: 1px solid rgba(255, 192, 45, 0.35);
+    background: none;
+    border: rgba(107, 114, 128, 0.5) 1px solid;
     border-radius: $radius;
     padding: 10px;
     cursor: pointer;
@@ -197,8 +199,8 @@ $radius: 10px;
     transition: background 0.15s, border-color 0.15s;
 
     &:hover {
-      background: rgba(255, 192, 45, 0.1);
-      border-color: $accent;
+      background: rgba(78, 190, 194, 0.25);
+      border-color: 1px solid rgba(78, 190, 194, 0.3);
     }
   }
 
@@ -206,9 +208,9 @@ $radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: $bg-light;
+    background: none;
     border: 1px solid rgba(255, 45, 45, 0.35);
-    color: rgba(255, 45, 45, 0.35);
+    color: rgba(255, 45, 45, 0.7);
     border-radius: $radius;
     padding: 10px;
     cursor: pointer;
@@ -223,14 +225,14 @@ $radius: 10px;
   }
 
   &__edit-ico {
-    color: $accent;
+    color: rgba(107, 114, 128, 1);
     font-size: 18px;
   }
 
   &__description {
     margin: 0;
     font-size: 14px;
-    color: $muted;
+    color: #4F4F4F;
     line-height: 1.6;
   }
 
@@ -243,7 +245,7 @@ $radius: 10px;
 
   &__meta-item {
     font-size: 13px;
-    color: $muted;
+    color: #4F4F4F;
   }
 
   &__meta-sep {

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, defineComponent, h } from "vue"
+import { ref, computed, onMounted} from "vue"
 import { useQuiz } from "@/features/quiz/store.ts"
 import type { QuestionIn, ContextIn } from "@/features/quiz/types.ts"
 import QuestionEditor from "@/features/quiz/components/QuestionEditor.vue"
-import QuestionPreview from "@/features/quiz/components/QuestionPreview.vue"
+import QuestionPreview from "@/features/quiz/components/Questionpreview.vue"
 import ContextEditor from "@/features/quiz/components/ContextEditor.vue"
 import { McDelete2Line, FlPenSparkle } from "@kalimahapps/vue-icons"
 
@@ -369,7 +369,7 @@ $radius-sm: 6px;
     font-size: 16px;
     font-weight: 700;
     margin: 0;
-    color: $text;
+    color: #4F4F4F;
   }
 
   &__header-actions {
@@ -378,10 +378,10 @@ $radius-sm: 6px;
   }
 
   &__btn-new {
-    background: $accent;
-    border: none;
+    background: rgba(78, 190, 194, 0.25);
+    border: 1px solid rgba(78, 190, 194, 0.3);
     border-radius: $radius;
-    color: #111827;
+    color: #234970;
     cursor: pointer;
     font-size: 13px;
     font-weight: 600;
@@ -405,6 +405,7 @@ $radius-sm: 6px;
 
   // ── Панели (редакторы) ──
   &__panel {
+    width: 100%;
     background: $bg-light;
     border-radius: $radius;
     padding: 20px;
@@ -417,7 +418,7 @@ $radius-sm: 6px;
 
   &__preview-wrap {
     width: 100%;
-    background: $bg-light;
+    background:  rgba(78, 190, 194, 0.25);
     border-radius: $radius;
     padding: 20px;
     border: 1.5px solid rgba(255,192,45,0.12);
@@ -472,7 +473,7 @@ $radius-sm: 6px;
 
   &__ctx-count {
     font-size: 11px;
-    color: $muted;
+    color: #6B7280;
     flex-shrink: 0;
   }
 
@@ -544,7 +545,10 @@ $radius-sm: 6px;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    background: $bg;
+    background: white;
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.12),
+        0 2px 10px rgba(0, 0, 0, 0.06);
     border-radius: $radius;
     border: 1.5px solid rgba(255,255,255,0.07);
     padding: 14px 16px;
@@ -563,12 +567,12 @@ $radius-sm: 6px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.07em;
-    color: $muted;
+    color: #4F4F4F;
   }
 
   &__empty-hint {
     font-size: 13px;
-    color: rgba(255,255,255,0.18);
+    color: #6B7280;
     margin: 0;
     text-align: center;
     padding: 8px 0;
@@ -586,13 +590,15 @@ $radius-sm: 6px;
 
   &__item {
     display: flex;
+    width: 100%;
     align-items: stretch;
-    background: $bg-light;
-    border-radius: $radius-sm;
+    background: rgba(78, 190, 194, 0.25);
+    border: 1px solid rgba(78, 190, 194, 0.3);
+    border-radius: 12px;
     overflow: hidden;
     transition: opacity 0.2s;
 
-    &--open { background: transparent; }
+    &--open { background:  rgba(78, 190, 194, 0.25); }
     &--dimmed { opacity: 0.35; pointer-events: none; }
   }
 
@@ -620,7 +626,7 @@ $radius-sm: 6px;
     height: 22px;
     border-radius: 50%;
     background: rgba(255,255,255,0.07);
-    color: $muted;
+    color: #4F4F4F;
     font-size: 11px;
     display: flex;
     align-items: center;
@@ -632,7 +638,6 @@ $radius-sm: 6px;
   &__item-text {
     margin: 0 0 3px;
     font-size: 13px;
-    color: $text;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -640,7 +645,7 @@ $radius-sm: 6px;
 
   &__item-type {
     font-size: 10px;
-    color: $muted;
+    color: #6B7280;
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
@@ -661,7 +666,7 @@ $radius-sm: 6px;
   &__item-delete {
     background: none;
     border: none;
-    color: rgba(255,255,255,0.18);
+    color: #4F4F4F;
     cursor: pointer;
     padding: 4px 5px;
     border-radius: 5px;
@@ -675,7 +680,7 @@ $radius-sm: 6px;
     &:disabled { opacity: 0.3; cursor: not-allowed; }
   }
 
-  &__item-edit:hover:not(:disabled)   { color: $accent;  background: rgba(255,192,45,0.08); }
+  &__item-edit:hover:not(:disabled)   { color: #234970;  background: rgba(78, 190, 194, 0.3); }
   &__item-delete:hover:not(:disabled) { color: #ff6b6b; background: rgba(255,107,107,0.08); }
 
   &__loading,

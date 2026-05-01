@@ -1,0 +1,29 @@
+// ─── Quiz Studio — общие переменные дизайн-системы ───────────────────────────
+// Подключать: @use '@/assets/quiz-vars' as *;
+
+// Палитра
+$bg:          #F6F6F6;
+$card:        #ffffff;
+$text:        #222222;
+$muted:       #6B7280;
+$border:      rgba(0, 0, 0, 0.08);
+$accent:      #234970;
+$teal:        #4EBEC2;
+$teal-soft:   rgba(78, 190, 194, 0.12);
+$teal-mid:    rgba(78, 190, 194, 0.25);
+$red:         #ef4444;
+$red-soft:    rgba(239, 68, 68, 0.08);
+$green:       #10b981;
+$green-soft:  rgba(16, 185, 129, 0.1);
+
+// Радиусы
+$radius:      16px;
+$radius-sm:   10px;
+$radius-xs:   6px;
+
+// Тени
+$shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
+$shadow-lift: 0 4px 20px rgba(0, 0, 0, 0.10);
+
+// Отступ под навигатор (мобилка)
+$nav-offset:  100px;

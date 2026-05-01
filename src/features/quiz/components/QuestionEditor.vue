@@ -199,7 +199,9 @@ function addOption() {
 function removeOption(idx: number) {
   if (choiceOptions.length <= 2) return
   const removed = choiceOptions.splice(idx, 1)[0]
+  if (!removed ) return;
   multipleCorrect.value = multipleCorrect.value.filter(id => id !== removed.id)
+  if (choiceOptions[0] === undefined) return;
   if (singleCorrect.value === removed.id) singleCorrect.value = choiceOptions[0].id
 }
 
@@ -212,7 +214,8 @@ function addMatchRow() {
 }
 function removeMatchRow(idx: number) {
   if (matchLeft.length <= 2) return
-  const lId = matchLeft[idx].id
+  const lId = matchLeft[idx]?.id
+  if (lId ===undefined) return;
   matchLeft.splice(idx, 1)
   matchRight.splice(idx, 1)
   delete pairs[lId]
@@ -221,10 +224,10 @@ function removeMatchRow(idx: number) {
 // ─── Helpers: input ───────────────────────────────────────────────────────────
 
 function addAlias(answerIdx: number) {
-  inputAnswers[answerIdx].aliases.push("")
+  inputAnswers[answerIdx]?.aliases.push("")
 }
 function removeAlias(answerIdx: number, aliasIdx: number) {
-  inputAnswers[answerIdx].aliases.splice(aliasIdx, 1)
+  inputAnswers[answerIdx]?.aliases.splice(aliasIdx, 1)
 }
 function addAnswer() {
   inputAnswers.push({ value: "", aliases: [] })
@@ -490,7 +493,7 @@ async function submit() {
       <div v-for="(left, idx) in matchLeft" :key="left.id" class="qe__match-row">
         <input class="qe__input" type="text" v-model="left.text" :placeholder="`Левый ${idx + 1}`" />
         <span class="qe__match-arrow">→</span>
-        <input class="qe__input" type="text" v-model="matchRight[idx].text" :placeholder="`Правый ${idx + 1}`" />
+        <input class="qe__input" type="text" v-model="matchRight[idx]!.text" :placeholder="`Правый ${idx + 1}`" />
         <select
             class="qe__select"
             :value="pairs[left.id]"
@@ -588,6 +591,7 @@ $radius: 10px;
 
 .qe {
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 16px;
   color: $text;

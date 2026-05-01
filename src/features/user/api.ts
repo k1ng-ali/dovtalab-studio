@@ -1,5 +1,13 @@
 import { http } from "@/shared/api/http";
+import type {Config} from "./types.ts"
 
 export const getMe = () => http.get(`/users/me`);
 
-export const getProfile = () => http.get(`/users/profile`);
+export const profile = () =>
+    http.get('/users/profile')
+
+export const config = () =>
+    http.get('/users/config')
+
+export const updateConfig = (data: Config) =>
+    http.patch('/users/config', data)

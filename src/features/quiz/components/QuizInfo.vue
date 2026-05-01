@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import QuestionList from "@/features/quiz/components/QuestionList.vue";
-import {useQuiz} from "@/features/quiz/store.ts";
-import type {ContextIn, QuizIn, QuizUpdateOut} from "@/features/quiz/types.ts";
-import {computed, reactive, ref, onMounted} from "vue";
-import {useRouter} from "vue-router";
+import {onMounted} from "vue";
 import QuizView from "@/features/quiz/components/QuizView.vue";
 
 
-const quizStore = useQuiz();
+//const quizStore = useQuiz();
 
 const props = defineProps<{
   quiz_id: number;
@@ -28,5 +25,7 @@ onMounted(async () => {
 </template>
 
 <style scoped lang="scss">
-
+.container {
+  width: 100%;
+}
 </style>

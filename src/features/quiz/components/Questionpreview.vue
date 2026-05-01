@@ -116,7 +116,7 @@ const inp = p.input
           <span class="qp__match-cell qp__match-cell--left">{{ leftItem.text }}</span>
           <span class="qp__match-arrow">→</span>
           <span class="qp__match-cell qp__match-cell--right">
-            {{ mt.right.find(r => r.id === mt.pairs[leftItem.id])?.text ?? '—' }}
+            {{ mt!.right.find(r => r.id === mt!.pairs[leftItem.id])?.text ?? '—' }}
           </span>
         </div>
       </div>
@@ -157,7 +157,7 @@ $bg-light: #1e2d47;
 $bg-card: #1a2640;
 $accent: #FFC02D;
 $accent-dim: rgba(255, 192, 45, 0.12);
-$correct: #34d399;
+$correct: #25805e;
 $correct-dim: rgba(52, 211, 153, 0.1);
 $text: #e2e8f0;
 $muted: rgba(226, 232, 240, 0.55);
@@ -192,8 +192,8 @@ $radius-sm: 6px;
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background: $accent-dim;
-    color: $accent;
+    background: rgba(35, 73, 112, 0.37);
+    color: #4F4F4F;
     font-size: 13px;
     font-weight: 700;
     display: flex;
@@ -207,8 +207,8 @@ $radius-sm: 6px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.07em;
-    color: $accent;
-    background: $accent-dim;
+    color: #234970;
+    background: rgba(35, 73, 112, 0.3);
     padding: 3px 10px;
     border-radius: 20px;
   }
@@ -231,22 +231,21 @@ $radius-sm: 6px;
     justify-content: center;
     font-size: 18px;
     transition: background 0.15s, color 0.15s;
-    color: $muted;
+    color: #4F4F4F;
 
-    &:hover { background: rgba(255,255,255,0.06); }
+    &:hover { background: rgba(255,255,255,0.3); }
 
-    &--edit:hover  { color: $accent; }
+    &--edit:hover  { color: #234970; }
     &--delete:hover { color: #ff6b6b; }
     &--close {
       font-size: 13px;
-      &:hover { color: $text; }
+      &:hover { color: #4F4F4F; }
     }
   }
 
   &__text {
     font-size: 16px;
     font-weight: 600;
-    color: $text;
     line-height: 1.55;
     margin: 0;
   }
@@ -282,7 +281,7 @@ $radius-sm: 6px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.07em;
-    color: $muted;
+    color: #4F4F4F;
     margin: 0;
   }
 
@@ -299,7 +298,7 @@ $radius-sm: 6px;
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    background: $bg;
+    background: rgba(78, 190, 194, 0.3);
     border-radius: $radius-sm;
     padding: 10px 12px;
     border: 1.5px solid transparent;
@@ -322,7 +321,7 @@ $radius-sm: 6px;
     display: block;
     width: 16px;
     height: 16px;
-    border: 2px solid rgba(255,255,255,0.2);
+    border: 2px solid #6B7280;
     background: transparent;
     transition: border-color 0.15s;
 
@@ -335,7 +334,7 @@ $radius-sm: 6px;
         content: '';
         position: absolute;
         inset: 2px;
-        background: $bg-light;
+        background: #234970;
       }
     }
   }
@@ -360,7 +359,7 @@ $radius-sm: 6px;
   &__option-text {
     flex: 1;
     font-size: 14px;
-    color: $text;
+    color: #1F2937;
     min-width: 0;
   }
 
