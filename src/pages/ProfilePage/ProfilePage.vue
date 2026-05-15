@@ -3,6 +3,7 @@ import { onMounted, computed, ref } from 'vue'
 import { useUser } from '@/features/user/store.ts'
 import { useHeaderStore } from '@/shared/stores/useHeaderStore.ts'
 import { useNavStore } from '@/shared/stores/useNavStore.ts'
+import { AkSignOut } from '@kalimahapps/vue-icons';
 
 const userStore   = useUser()
 const headerStore = useHeaderStore()
@@ -34,7 +35,7 @@ const initials = computed(() => {
   return (f + l).toUpperCase() || user.value.username?.[0]?.toUpperCase() || '?'
 })
 
-// Форматирование суммарного времени в тестах
+/* Форматирование суммарного времени в тестах
 const totalTimeLabel = computed(() => {
   const t = config.value?.quiz_time ?? 0
   const h = Math.floor(t / 3600)
@@ -42,7 +43,7 @@ const totalTimeLabel = computed(() => {
   if (h > 0) return `${h}ч ${m}м`
   return `${m} мин`
 })
-
+*/
 // Дата регистрации
 const joinedLabel = computed(() => {
   if (!config.value?.joined_at) return '—'
@@ -58,7 +59,8 @@ const toggleTimer = async () => {
   if (!config.value) return
   timerLoading.value = true
   try {
-    await userStore.patchConfig({ ...config.value, timer: !config.value.timer })
+    console.log("toggle time")
+    // TODO: Дописать логики таймера
   } finally {
     timerLoading.value = false
   }
@@ -76,10 +78,16 @@ const setLanguage = async (code: string) => {
   if (!config.value || config.value.language === code) return
   langLoading.value = true
   try {
-    await userStore.patchConfig({ ...config.value, language: code })
+    console.log("language", code)
+    // TODO: Дописать логику смена Языка
   } finally {
     langLoading.value = false
   }
+}
+
+const logOut = async() =>{
+  await userStore.logout()
+  router.push('/')
 }
 
 const avatarError = ref(false)
@@ -91,6 +99,10 @@ const avatarError = ref(false)
     <!-- ── Hero ──────────────────────────────────────────────────── -->
     <div class="hero">
       <div class="hero-bg" />
+
+      <AkSignOut class="sign-out-btn"
+                 @click="logOut()"
+      />
 
       <div class="avatar-wrap">
         <img
@@ -241,6 +253,24 @@ const avatarError = ref(false)
   align-items: center;
   gap: 16px;
   overflow: hidden;
+}
+
+.sign-out-btn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 30px;
+  height: 30px;
+  background: #f4f4f4;
+  border-radius: 7px;
+  border: 1px solid rgba(107, 114, 128, 0.1);
+  border-block-start-color: white;
+  border-block-end-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+  padding: 5px;
+  padding-left: 7px;
+  color: #4F4F4F;
+  cursor: pointer;
 }
 
 .hero-bg {

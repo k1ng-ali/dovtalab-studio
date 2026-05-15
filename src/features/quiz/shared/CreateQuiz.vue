@@ -3,6 +3,8 @@ import { reactive, ref } from "vue"
 import { useQuiz } from "@/features/quiz/store.ts"
 import type { QuizOut } from "@/features/quiz/types.ts"
 import { useRouter } from "vue-router"
+import {useMessage} from "@/shared/alerts/useMessage.ts";
+const messageStore = useMessage();
 
 const quizStore = useQuiz()
 const router = useRouter()
@@ -21,13 +23,16 @@ async function submit() {
   if (!isValid() || loading.value) return
   error.value = ""
   loading.value = true
+  const ms = messageStore.loading("Создание...")
   try {
     const quiz = await quizStore.uploadQuiz(form)
     if (quiz) {
       await router.push({ name: "quiz-info", params: { quiz_id: quiz.id } })
+      ms.then(() => messageStore.success("Создано успешно", 3))
     }
   } catch (e: any) {
     error.value = e?.response?.data?.detail ?? e?.message ?? "Ошибка при создании"
+    ms.then(() => messageStore.error("Неизвестная ошибка", 3))
   } finally {
     loading.value = false
   }

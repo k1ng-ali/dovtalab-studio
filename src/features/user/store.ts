@@ -60,5 +60,10 @@ export const useUser = defineStore("user", {
             this.config = null
             this.roles  = []
         },
+
+        async logout() {
+            await api.logout()
+            await this.clean()
+        },
     },
 })

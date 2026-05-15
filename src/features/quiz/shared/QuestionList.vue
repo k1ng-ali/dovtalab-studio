@@ -6,6 +6,9 @@ import QuestionEditorModal from "@/features/quiz/shared/QuestionEditorModal.vue"
 import QuestionPreview     from "@/features/quiz/shared/Questionpreview.vue"
 import ContextEditor       from "@/features/quiz/shared/ContextEditor.vue"
 import { McDelete2Line, FlPenSparkle } from "@kalimahapps/vue-icons"
+import {useMessage} from "@/shared/alerts/useMessage.ts";
+
+const messageStore = useMessage();
 
 const props = defineProps<{ quiz_id: number }>()
 
@@ -90,7 +93,12 @@ function openPreview(q: QuestionIn) {
   newEditorFor.value    = null
 }
 
-function openNewContext()           { closeAll(); contextEditorState.value = "new" }
+function openNewContext()           {
+  messageStore.warning("Временно недоступно")
+  //closeAll();
+  //contextEditorState.value = "new"
+}
+
 function openEditContext(id: number){ closeAll(); contextEditorState.value = id }
 
 function onQuestionCreated(q: QuestionIn) {
@@ -404,13 +412,16 @@ $radius-xs: 6px;
 
   &__btn-ctx {
     padding: 7px 14px;
-    background: $ctx-soft;
-    border: 1.5px solid rgba(59,130,246,0.2);
+    //background: $ctx-soft;
+    //border: 1.5px solid rgba(59,130,246,0.2);
+    background: rgba(79, 79, 79, 0.1);
+    border: 1.5px solid rgba(138, 138, 138, 0.3);
     border-radius: 30px;
-    color: $ctx-color;
+  //  color: $ctx-color;
+    color: rgba(79, 79, 79, 0.3);
     font-size: 13px;
     font-weight: 700;
-    cursor: pointer;
+    cursor: not-allowed;
     font-family: inherit;
     transition: background 0.15s;
     &:hover { background: rgba(59,130,246,0.16); }
