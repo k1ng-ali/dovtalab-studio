@@ -48,6 +48,7 @@ function formatTime(seconds: number) {
   return `${s} сек`
 }
 
+
 async function onDelete() {
   if (!confirm("Удалить викторину? Это действие необратимо.")) return
   deleting.value = true
