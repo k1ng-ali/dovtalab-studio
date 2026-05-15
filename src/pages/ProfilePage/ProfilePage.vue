@@ -4,6 +4,7 @@ import { useUser } from '@/features/user/store.ts'
 import { useHeaderStore } from '@/shared/stores/useHeaderStore.ts'
 import { useNavStore } from '@/shared/stores/useNavStore.ts'
 import { AkSignOut } from '@kalimahapps/vue-icons';
+import router from "@/app/router.ts";
 
 const userStore   = useUser()
 const headerStore = useHeaderStore()

@@ -1,4 +1,4 @@
-import type { User } from "@/features/user/type.ts"
+import type { User } from "@/features/user/types.ts"
 
 export interface TelegramDataTest {
     id: number
