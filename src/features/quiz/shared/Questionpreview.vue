@@ -152,17 +152,7 @@ const inp = p.input
 </template>
 
 <style scoped lang="scss">
-$bg: #172035;
-$bg-light: #1e2d47;
-$bg-card: #1a2640;
-$accent: #FFC02D;
-$accent-dim: rgba(255, 192, 45, 0.12);
-$correct: #25805e;
-$correct-dim: rgba(52, 211, 153, 0.1);
-$text: #e2e8f0;
-$muted: rgba(226, 232, 240, 0.55);
-$radius: 10px;
-$radius-sm: 6px;
+@use "@/shared/styles/tokens" as *;
 
 .qp {
   display: flex;
@@ -225,7 +215,7 @@ $radius-sm: 6px;
     cursor: pointer;
     width: 32px;
     height: 32px;
-    border-radius: $radius-sm;
+    border-radius: $r-sm;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -251,7 +241,7 @@ $radius-sm: 6px;
   }
 
   &__image-wrap {
-    border-radius: $radius;
+    border-radius: $r-md;
     overflow: hidden;
     border: 1.5px solid rgba(255,255,255,0.08);
     max-width: 400px;
@@ -298,15 +288,15 @@ $radius-sm: 6px;
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    background: rgba(78, 190, 194, 0.3);
-    border-radius: $radius-sm;
+    background: $bg-subtle;
+    border-radius: $r-sm;
     padding: 10px 12px;
-    border: 1.5px solid transparent;
+    border: $border-md 1px solid;
     flex-wrap: wrap;
     transition: border-color 0.15s, background 0.15s;
 
     &--correct {
-      background: $correct-dim;
+      background: $green-soft;
       border-color: rgba(52, 211, 153, 0.25);
     }
   }
@@ -326,8 +316,8 @@ $radius-sm: 6px;
     transition: border-color 0.15s;
 
     &--checked {
-      border-color: $correct;
-      background: $correct;
+      border-color: $green;
+      background: $green;
       position: relative;
 
       &::after {
@@ -366,7 +356,7 @@ $radius-sm: 6px;
   &__correct-tag {
     font-size: 11px;
     font-weight: 600;
-    color: $correct;
+    color: $green;
     flex-shrink: 0;
   }
 
@@ -400,7 +390,7 @@ $radius-sm: 6px;
 
     &--accent {
       color: $accent;
-      background: $accent-dim;
+      background: $accent-soft;
       border-color: rgba(255,192,45,0.2);
     }
   }
@@ -423,13 +413,13 @@ $radius-sm: 6px;
     font-size: 14px;
     color: $text;
     background: $bg;
-    border-radius: $radius-sm;
+    border-radius: $r-sm;
     padding: 8px 12px;
     min-width: 0;
 
     &--right {
-      color: $correct;
-      background: $correct-dim;
+      color: $green;
+      background: $green-soft;
     }
   }
 
@@ -458,9 +448,9 @@ $radius-sm: 6px;
   &__input-value {
     font-size: 14px;
     font-weight: 600;
-    color: $correct;
-    background: $correct-dim;
-    border-radius: $radius-sm;
+    color: $green;
+    background: $green-soft;
+    border-radius: $r-sm;
     padding: 8px 12px;
     border: 1px solid rgba(52,211,153,0.2);
   }
@@ -482,7 +472,7 @@ $radius-sm: 6px;
     font-size: 13px;
     color: $muted;
     background: $bg;
-    border-radius: $radius-sm;
+    border-radius: $r-sm;
     padding: 4px 10px;
     border: 1px solid rgba(255,255,255,0.07);
   }

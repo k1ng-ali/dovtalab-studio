@@ -1,7 +1,5 @@
-import type {QuestionIn, QuestionOut, QuizIn, QuizOut, QuizUpdateOut} from "@/features/quiz/types.ts";
 import {http} from "@/shared/api/http.ts";
-
-export const myQuizzes = () => http.get<QuizIn[]>('/my-quizzes/')
+import type {QuestionIn, QuestionOut, QuizIn, QuizOut, QuizUpdateOut} from "@/features/quiz/types.ts";
 
 export const allQuizzes = () => http.get<QuizIn[]>('/quizzes/')
 
@@ -12,6 +10,7 @@ export const createQuiz = (quiz: QuizOut) => http.post<QuizIn>('/quizzes/', quiz
 export const updateQuiz = (quiz: QuizUpdateOut) => http.patch(`/quizzes/${quiz.id}`, quiz)
 
 export const deleteQuiz = (quiz_id: number) => http.delete(`/quizzes/${quiz_id}`)
+
 
 // Добавь эти функции в свой существующий api.ts файл
 // Получить вопросы викторины

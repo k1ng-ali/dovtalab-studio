@@ -582,12 +582,7 @@ async function submit() {
 </template>
 
 <style scoped lang="scss">
-$bg: #172035;
-$bg-light: #1e2d47;
-$accent: #FFC02D;
-$text: #e2e8f0;
-$muted: rgba(226, 232, 240, 0.6);
-$radius: 10px;
+@use "@/shared/styles/tokens" as *;
 
 .qe {
   display: flex;
@@ -610,7 +605,7 @@ $radius: 10px;
 
   &__tab {
     padding: 6px 14px;
-    border-radius: $radius;
+    border-radius: $r-lg;
     border: 1.5px solid transparent;
     background: $bg;
     color: $muted;
@@ -654,9 +649,10 @@ $radius: 10px;
   }
 
   &__input {
-    background: $bg;
-    border: none;
-    border-radius: $radius;
+    background: $bg-subtle;
+    box-shadow: $shadow-sm;
+    border: $border-md 1px solid;
+    border-radius: $r-xs;
     color: $text;
     font-size: 14px;
     padding: 7px 12px;
@@ -671,18 +667,18 @@ $radius: 10px;
 
     &--xs { width: 80px; }
 
-    &::placeholder { color: rgba(255, 255, 255, 0.25); }
+    &::placeholder { color: $muted; }
   }
 
   &__textarea {
     background: $bg;
-    border: none;
-    border-radius: $radius;
+    border: $border 1px solid;
+    border-radius: $r-md;
     color: $text;
     font-size: 14px;
     padding: 10px 12px;
     outline: none;
-    width: 100%;
+    width: calc(100% - 24px);
     resize: vertical;
     min-height: 80px;
     font-family: inherit;
@@ -692,8 +688,8 @@ $radius: 10px;
 
   &__select {
     background: $bg;
-    border: none;
-    border-radius: $radius;
+    border: $border-md 1px solid;
+    border-radius: $r-sm;
     color: $text;
     font-size: 13px;
     padding: 7px 10px;
@@ -711,8 +707,8 @@ $radius: 10px;
     justify-content: center;
     gap: 6px;
     padding: 28px 16px;
-    border-radius: $radius;
-    border: 2px dashed rgba(255, 255, 255, 0.12);
+    border-radius: $r-md;
+    border: 2px dashed $border;
     background: $bg;
     cursor: pointer;
     transition: border-color 0.2s, background 0.2s;
@@ -760,7 +756,7 @@ $radius: 10px;
     position: relative;
     width: 100%;
     max-width: 320px;
-    border-radius: $radius;
+    border-radius: $r-md;
     overflow: hidden;
     border: 1.5px solid rgba(255, 255, 255, 0.1);
 
@@ -796,7 +792,7 @@ $radius: 10px;
     display: block;
     padding: 6px 10px;
     font-size: 11px;
-    color: $muted;
+    color: $text;
     background: rgba(0, 0, 0, 0.25);
     white-space: nowrap;
     overflow: hidden;
@@ -835,9 +831,11 @@ $radius: 10px;
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    background: $bg-light;
+    background: $card-raised;
+    box-shadow: $shadow-card;
+    border: $border-md 2px solid;
     padding: 10px;
-    border-radius: $radius;
+    border-radius: $r-md;
   }
 
   &__option-mark {
@@ -866,7 +864,7 @@ $radius: 10px;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 8px;
     font-size: 12px;
-    color: $muted;
+    color: $text-2;
     padding: 0 4px;
   }
 
@@ -874,9 +872,11 @@ $radius: 10px;
     display: flex;
     align-items: center;
     gap: 8px;
-    background: $bg-light;
+    background: $card-raised;
+    box-shadow: $shadow-md;
+    border: $border-md 1px solid;
     padding: 10px;
-    border-radius: $radius;
+    border-radius: $r-sm;
 
     .qe__input { flex: 1; min-width: 0; }
   }
@@ -888,8 +888,8 @@ $radius: 10px;
   }
 
   &__answer-block {
-    background: $bg-light;
-    border-radius: $radius;
+    background: $bg;
+    border-radius: $r-sm;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -917,8 +917,9 @@ $radius: 10px;
   }
 
   &__btn-alias {
-    background: none;
-    border: none;
+    background: $bg-subtle;
+    border: $border-md 1px dashed;
+    border-radius: $r-sm;
     color: $muted;
     cursor: pointer;
     font-size: 12px;
@@ -954,8 +955,8 @@ $radius: 10px;
 
   &__btn-add {
     background: none;
-    border: 1.5px dashed rgba(255, 192, 45, 0.4);
-    border-radius: $radius;
+    border: 1.5px dashed $accent;
+    border-radius: $r-md;
     color: $accent;
     cursor: pointer;
     font-size: 13px;
@@ -989,7 +990,7 @@ $radius: 10px;
 
   &__btn {
     padding: 8px 20px;
-    border-radius: $radius;
+    border-radius: $r-md;
     border: none;
     font-size: 14px;
     font-weight: 600;
@@ -997,8 +998,8 @@ $radius: 10px;
     transition: background 0.15s, color 0.15s;
 
     &--cancel {
-      background: $bg;
-      color: $muted;
+      background: $teal-soft;
+      color: $text-2;
 
       &:hover { color: $text; }
     }
@@ -1010,7 +1011,7 @@ $radius: 10px;
 
       &.active {
         background: $accent;
-        color: #111827;
+        color: $card;
         cursor: pointer;
       }
     }

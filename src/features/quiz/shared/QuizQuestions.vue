@@ -3,7 +3,7 @@ import { onMounted, ref } from "vue"
 import { useQuiz } from "@/features/quiz/store.ts"
 import { useRouter } from "vue-router"
 import type { QuizIn } from "@/features/quiz/types.ts"
-import QuestionList from "@/features/quiz/components/QuestionList.vue"
+import QuestionList from "@/features/quiz/shared/QuestionList.vue"
 
 const props = defineProps<{
   quiz_id: number

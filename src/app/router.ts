@@ -3,11 +3,11 @@ import { useAuthStore } from "@/features/auth/store.ts"
 import { useUser } from "@/features/user/store.ts"
 
 import Auth        from "@/features/auth/Auth.vue"
-import MyQuiz      from "@/features/quiz/components/MyQuiz.vue"
-import AllQuiz     from "@/features/quiz/components/AllQuiz.vue"
-import CreateQuiz  from "@/features/quiz/components/CreateQuiz.vue"
-import QuizInfo    from "@/features/quiz/components/QuizInfo.vue"
-import ProfilePage from "@/pages/ProfilePage.vue"
+import MyQuiz      from "@/features/quiz/myQuiz/MyQuiz.vue"
+import AllQuiz     from "@/features/quiz/allQuiz/AllQuiz.vue"
+import CreateQuiz  from "@/features/quiz/shared/CreateQuiz.vue"
+import QuizInfo    from "@/features/quiz/shared/QuizInfo.vue"
+import ProfilePage from "@/pages/ProfilePage/ProfilePage.vue"
 
 const router = createRouter({
     history: createWebHistory(),

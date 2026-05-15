@@ -19,6 +19,8 @@ export const useUser = defineStore("user", {
 
         isCreator: (state) => state.roles.includes("creator"),
 
+        is_pro: (state) => state.roles.includes("pro") ?? false,
+
         // Администратор — видит /all-quizzes и другие расширенные маршруты
         isAdmin: (state) => state.roles.includes("admin"),
     },

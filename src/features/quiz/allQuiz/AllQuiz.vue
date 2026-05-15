@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useQuiz } from "@/features/quiz/store.ts"
+import {useAllQuiz} from "@/features/quiz/allQuiz/store.ts";
 import { storeToRefs } from "pinia"
 import { onMounted, ref } from "vue"
 import { useRouter } from "vue-router"
 
-const quizStore = useQuiz()
+const quizStore = useAllQuiz()
 const { quizzes } = storeToRefs(quizStore)
 const router = useRouter()
 const loading = ref(true)
@@ -39,9 +39,6 @@ function goToQuiz(id: number) {
         <h1 class="page__title">Все викторины</h1>
         <p class="page__subtitle">Администрирование</p>
       </div>
-      <router-link :to="{ name: 'quiz-create' }" class="page__create-btn">
-        + Создать
-      </router-link>
     </div>
 
     <!-- ── Скелетон ── -->
@@ -76,9 +73,6 @@ function goToQuiz(id: number) {
     <div v-else class="empty">
       <p class="empty__icon">📋</p>
       <p class="empty__text">Викторин пока нет</p>
-      <router-link :to="{ name: 'quiz-create' }" class="empty__link">
-        Создать первую
-      </router-link>
     </div>
 
   </div>
@@ -113,9 +107,15 @@ $radius-sm: 10px;
     justify-content: space-between;
     gap: 12px;
     padding: 16px 20px;
-    background: $card;
+    background: linear-gradient(
+            to top,
+            rgba(255, 255, 255, 0.95) 1%,
+            rgba(255, 255, 255, 0.7) 30%,
+            rgba(255, 255, 255, 0) 50%
+    );
+    backdrop-filter: blur(10px);
     border-radius: $radius;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.16);
     position: sticky;
     top: 16px;
     z-index: 10;
@@ -166,6 +166,7 @@ $radius-sm: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding-bottom: 120px;
 }
 
 // ── Карточка ──────────────────────────────────────────────────────────────────
