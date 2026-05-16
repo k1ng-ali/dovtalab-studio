@@ -30,10 +30,10 @@ const logout = () => {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: calc(100% - 40px);
   height: 100vh;
   background: #F6F6F6;
-  z-index: 20;
+  z-index: 90;
 }
 
 .wrapper {

@@ -120,7 +120,7 @@ onUnmounted(() => {
   // ── Mobile: bottom sheet ──
   max-height: 92dvh;
   border-radius: 24px 24px 0 0;
-  padding-top: 8px;
+  padding-top: 20px;
   padding-bottom: 20px;
 
   @media (min-width: 641px) {
@@ -128,7 +128,8 @@ onUnmounted(() => {
     max-width: 620px;
     max-height: 88vh;
     border-radius: 20px;
-    padding-top: 0;
+    padding-top: 20px;
+    padding-right: 2px;
   }
 }
 
@@ -185,12 +186,21 @@ onUnmounted(() => {
   // iOS momentum scroll
   -webkit-overflow-scrolling: touch;
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   // Custom scrollbar (desktop)
   @media (min-width: 641px) {
     padding: 12px 24px 28px;
 
-    &::-webkit-scrollbar { width: 4px; }
-    &::-webkit-scrollbar-track { background: transparent; }
+    &::-webkit-scrollbar {
+      display: unset;
+      width: 4px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
     &::-webkit-scrollbar-thumb {
       background: $border-md;
       border-radius: 2px;

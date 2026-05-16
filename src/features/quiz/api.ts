@@ -3,7 +3,7 @@ import {http} from "@/shared/api/http.ts";
 
 export const myQuizzes = () => http.get<QuizIn[]>('/my-quizzes/')
 
-export const allQuizzes = () => http.get<QuizIn[]>('/quizzes/')
+export const allQuizzes = () => http.get<QuizIn[]>('/quizzes/all')
 
 export const getQuiz = (quiz_id: number) => http.get<QuizIn>(`/quizzes/${quiz_id}`)
 

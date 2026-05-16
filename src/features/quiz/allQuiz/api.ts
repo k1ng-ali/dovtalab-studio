@@ -1,7 +1,7 @@
 import {http} from "@/shared/api/http.ts";
 import type {QuestionIn, QuestionOut, QuizIn, QuizOut, QuizUpdateOut} from "@/features/quiz/types.ts";
 
-export const allQuizzes = () => http.get<QuizIn[]>('/quizzes/')
+export const allQuizzes = () => http.get<QuizIn[]>('/quizzes/all')
 
 export const getQuiz = (quiz_id: number) => http.get<QuizIn>(`/quizzes/${quiz_id}`)
 
