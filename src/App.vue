@@ -143,11 +143,5 @@ onMounted(async () => {
   width: 100%;
   padding: 20px;
 }
-.accessdenied {
-  display: flex;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 99;
-}
+
 </style>

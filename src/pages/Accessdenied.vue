@@ -31,7 +31,7 @@ const logout = () => {
   position: fixed;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: calc(100% - 40px);
   padding: 20px;
   height: 100vh;
   background: #F6F6F6;

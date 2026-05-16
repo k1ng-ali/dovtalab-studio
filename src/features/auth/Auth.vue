@@ -33,10 +33,12 @@ const redirect = (url:string) => {
 .auth {
   display: flex;
   position: fixed;
+  top: 0;
+  left: 0;
   background: #F6F6F6;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: calc(100% - 40px);
   height: 100%;
   z-index: 99;
   padding: 20px;

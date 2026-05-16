@@ -242,7 +242,6 @@ const avatarError = ref(false)
 /* ── Hero ── */
 .hero {
   position: relative;
-  margin: 0 16px;
   padding: 28px 20px 24px;
   border-radius: 28px;
   background: rgba(255, 255, 255, 0.75);
@@ -254,6 +253,7 @@ const avatarError = ref(false)
   align-items: center;
   gap: 16px;
   overflow: hidden;
+  width: calc(100% - 40px);
 }
 
 .sign-out-btn {
@@ -382,7 +382,7 @@ const avatarError = ref(false)
 
 /* ── Section ── */
 .section {
-  padding: 0 16px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 12px;

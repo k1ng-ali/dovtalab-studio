@@ -98,7 +98,7 @@ $radius-sm: 10px;
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  padding: 20px 16px 100px; // 100px — отступ под навигатор
+  padding: 20px 0 100px; // 100px — отступ под навигатор
   box-sizing: border-box;
 
   &__header {
