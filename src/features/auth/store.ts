@@ -49,7 +49,6 @@ export const useAuthStore = defineStore("auth", {
             try {
                 const { data } = await api.telegramLogin(payload)
                 this.applyTokens(data)
-                console.log("Success", data)
                 await this.refresh()
             } catch (e) {
                 this.setError(e)
@@ -66,7 +65,6 @@ export const useAuthStore = defineStore("auth", {
             const { data } = await api.refreshToken({ refresh_token: refreshToken })
             this.accessToken = data.access_token
             this.status = 'authenticated'
-            console.log(data)
             // Обновляем refresh token (ротация)
             if (data.refresh_token) {
                 localStorage.setItem('refresh_token', data.refresh_token)
@@ -86,7 +84,6 @@ export const useAuthStore = defineStore("auth", {
             this.status = 'authenticated'
             this.error = null;
             if (data.refresh_token) {
-                console.log(data.refresh_token)
                 localStorage.setItem('refresh_token', data.refresh_token)
             }
         },
