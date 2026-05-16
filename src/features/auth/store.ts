@@ -57,15 +57,25 @@ export const useAuthStore = defineStore("auth", {
         },
 
         async refresh() {
-            const {data} = await api.refreshToken();
+            const refreshToken = localStorage.getItem('refresh_token')
+            if (!refreshToken) {
+                this.status = 'idle'
+                return
+            }
+            const { data } = await api.refreshToken({ refresh_token: refreshToken })
             this.accessToken = data.access_token
             this.status = 'authenticated'
+            // Обновляем refresh token (ротация)
+            if (data.refresh_token) {
+                localStorage.setItem('refresh_token', data.refresh_token)
+            }
         },
 
         logout() {
-            this.accessToken = null;
+            this.accessToken = null
             this.status = 'idle'
-            this.error = null as string | null
+            this.error = null
+            localStorage.removeItem('refresh_token') // ← добавь
         },
 
         // --- Internal Helpers ----
@@ -73,6 +83,9 @@ export const useAuthStore = defineStore("auth", {
             this.accessToken = data.access_token
             this.status = 'authenticated'
             this.error = null;
+            if (data.refresh_token) {
+                localStorage.setItem('refresh_token', data.refresh_token)
+            }
         },
 
         setError(e: unknown) {

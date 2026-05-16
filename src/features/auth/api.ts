@@ -6,9 +6,9 @@ import type {
 export const telegramAuth = (data: any) =>
     http.post('/auth/telegram/webapp', data)
 
-export const refreshToken = () => {
-    return http.post('/auth/refresh')
-}
+// api.ts
+export const refreshToken = (body?: { refresh_token?: string }) =>
+    http.post('/auth/refresh', body ?? {})
 
 export const testLogin = () => http.get('/auth/test')
 

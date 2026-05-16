@@ -64,7 +64,7 @@ export interface TelegramLoginRequest {
 
 export interface AuthTokensResponse {
     access_token: string
-    refresh_token: string
+    refresh_token?: string
     token_type: 'bearer'
     expires_in: number           // секунды до истечения access_token
     user: User

@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const http = axios.create({
     baseURL: import.meta.env.VITE_API_URL ?? "https://api.dovtalab.app/",
-    withCredentials: true,
+    //withCredentials: true,
 })
 
 http.interceptors.request.use((config) => {
