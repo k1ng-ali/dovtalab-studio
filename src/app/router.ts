@@ -84,10 +84,6 @@ router.beforeEach((to) => {
         return { name: "auth" }
     }
 
-    // Нужна роль creator
-    if (to.meta.requiresCreator && !user.isCreator) {
-        return { name: "auth" }
-    }
 
     // Нужна роль admin
     if (to.meta.requiresAdmin && !user.isAdmin) {
