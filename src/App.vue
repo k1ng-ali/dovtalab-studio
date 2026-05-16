@@ -140,7 +140,7 @@ onMounted(async () => {
 
 .content {
   display: flex;
-  width: calc(100% - 40px);
+  width: 100%;
   padding: 20px;
 }
 .accessdenied {

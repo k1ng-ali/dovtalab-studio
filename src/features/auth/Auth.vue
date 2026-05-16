@@ -36,9 +36,10 @@ const redirect = (url:string) => {
   background: #F6F6F6;
   justify-content: center;
   align-items: center;
-  width: calc(100% - 40px);
+  width: 100%;
   height: 100%;
   z-index: 99;
+  padding: 20px;
 
   &__card {
     display: flex;

@@ -28,9 +28,11 @@ const logout = () => {
 <style scoped lang="scss">
 .container {
   display: flex;
+  position: fixed;
   justify-content: center;
   align-items: center;
-  width: calc(100% - 40px);
+  width: 100%;
+  padding: 20px;
   height: 100vh;
   background: #F6F6F6;
   z-index: 90;
