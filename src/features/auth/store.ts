@@ -63,6 +63,7 @@ export const useAuthStore = defineStore("auth", {
                 this.status = 'idle'
                 return
             }
+            console.log(refreshToken)
             const { data } = await api.refreshToken({ refresh_token: refreshToken })
             this.accessToken = data.access_token
             this.status = 'authenticated'
