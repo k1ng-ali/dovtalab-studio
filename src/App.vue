@@ -33,6 +33,8 @@ onMounted(async () => {
   // 0. Dev bypass
   if (import.meta.env.VITE_DEV_MODE === 'true') {
     try {
+      console.log("dev login...")
+
       const { data } = await http.post('/auth/dev-login')
       authStore.accessToken = data.access_token
       authStore.status = 'authenticated'
@@ -54,6 +56,7 @@ onMounted(async () => {
     sessionStorage.removeItem('tg_auth_code')
     sessionStorage.removeItem('tg_auth_state_returned')
     sessionStorage.removeItem('tg_auth_state')
+    console.log("redirect state", redirectState)
 
     if (redirectState !== savedState) {
       appState.value = 'auth'  // State mismatch — показать экран входа
@@ -81,6 +84,7 @@ onMounted(async () => {
 
   // 1. Уже есть accessToken в памяти
   if (authStore.accessToken) {
+    console.log("has access...")
     appState.value = 'ok'
     await router.push('/')
     return
@@ -88,6 +92,7 @@ onMounted(async () => {
 
   // 2. Telegram Mini App — initData есть, сразу логиним
   if (isTelegramEnv) {
+    console.log("mini app login...")
     const initData = getInitData()!
     try {
       await authStore.login(initData)
@@ -103,6 +108,7 @@ onMounted(async () => {
   try {
     await authStore.refresh()
     appState.value = 'ok'
+    console.log("refreshed tokens...")
     await router.push('/')
     return
   } catch {
