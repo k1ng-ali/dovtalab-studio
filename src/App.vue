@@ -64,7 +64,12 @@ onMounted(async () => {
       sessionStorage.removeItem('tg_code_verifier')
 
       try {
-        await authStore.loginWithTelegram({ code: redirectCode, nonce, code_verifier: codeVerifier })
+        await authStore.loginWithTelegram({
+          code: redirectCode,
+          nonce,
+          code_verifier: codeVerifier,
+          redirect_uri: import.meta.env.VITE_TELEGRAM_REDIRECT_URI,
+        })
         appState.value = 'ok'
         await router.push('/')
       } catch {

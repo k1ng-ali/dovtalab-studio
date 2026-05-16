@@ -44,7 +44,7 @@ export const useAuthStore = defineStore("auth", {
 
         // --- Login Widget -----
 
-        async loginWithTelegram(payload: { code: string; nonce: string; code_verifier: string }) {
+        async loginWithTelegram(payload: { code: string; nonce: string; code_verifier: string, redirect_uri: string }) {
             this.status = 'loading'
             try {
                 const { data } = await api.telegramLogin(payload)
