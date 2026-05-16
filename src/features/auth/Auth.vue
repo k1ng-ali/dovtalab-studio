@@ -23,7 +23,7 @@ const redirect = (url:string) => {
       <TelegramLoginButton @success="onSuccess"
       class="auth__login-button"/>
       <button class="btn-redirect"
-              @click="redirect('https://t.me/Dovtalabbot/dovtalab_app')"
+              @click="redirect('https://t.me/Dovtalabbot/studio')"
       >Открыть в mini-apps</button>
     </div>
   </div>

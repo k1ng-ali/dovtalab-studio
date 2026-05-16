@@ -46,7 +46,12 @@ const { isLoading, openLoginPopup } = useTelegramLogin()
 async function handleClick() {
   try {
     const { code, nonce, code_verifier } = await openLoginPopup()
-    await authStore.loginWithTelegram({ code, nonce, code_verifier })
+    await authStore.loginWithTelegram({
+      code,
+      nonce,
+      code_verifier,
+      redirect_uri: import.meta.env.VITE_TELEGRAM_REDIRECT_URI
+    })
     emit('success')
     console.log("sucessed")
   } catch (e) {
