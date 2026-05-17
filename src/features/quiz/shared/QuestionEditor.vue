@@ -322,7 +322,6 @@ async function submit() {
   loading.value = true
 
   try {
-    if (!props.question?.id) {return}
     let payload: QuestionOut = {
       id: props.question?.id,
       text: questionText.value.trim(),

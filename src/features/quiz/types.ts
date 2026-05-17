@@ -119,7 +119,7 @@ export interface QuestionPayload {
 // ─── Question Out (request) ───────────────────────────────────────────────────
 
 export interface QuestionOut {
-    id: number
+    id?: number
     text: string
     type: QuestionType
     context_id?: number | null
